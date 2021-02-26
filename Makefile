@@ -1,3 +1,4 @@
+
 up-dynamodb-daemon:
 	docker-compose -f dynamodb-local.yaml up -d 
 
@@ -10,6 +11,12 @@ build:
 run:
 	sam local start-api  --shutdown --docker-network local-dynamodb
 
+invoke:
+	sam local invoke --docker-network local-dynamodb  "${lambda}" -e ./events/event-${event}.json | jq  
+
+list-functions:
+	 yq '.Resources | keys[]' template.yml |  grep -E  "Function"
+	 
 generate-table-spec:
 	yq  ".Resources.${table}.Properties" template.yml > local-db-create-${table}.json 
 
