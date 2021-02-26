@@ -1,0 +1,30 @@
+up-dynamodb-daemon:
+	docker-compose -f dynamodb-local.yaml up -d 
+
+up-dynamodb:
+	docker-compose -f dynamodb-local.yaml up 
+
+build: 
+	sam build --use-container
+
+run:
+	sam local start-api  --shutdown --docker-network local-dynamodb
+
+generate-table-spec:
+	yq  ".Resources.${table}.Properties" template.yml > local-db-create-${table}.json 
+
+create-table:
+	aws dynamodb create-table --cli-input-json file://local-db-create-${table}.json --endpoint-url http://localhost:8000 --region us-west-1
+
+delete-table:
+	aws dynamodb delete-table --table-name ${table} --endpoint-url http://localhost:8000  --region us-west-1
+
+list-tables:
+	aws dynamodb list-tables --endpoint-url http://localhost:8000 --region us-west-1
+
+down:
+	docker-compose -f dynamodb-local.yaml  down
+
+logs:
+	docker-compose logs -f dynamodb-local.yaml
+
