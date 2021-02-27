@@ -4,6 +4,8 @@ https://github.com/vincedgy/aws-sam-webpack-typescript/tree/master/demo
 
 https://github.com/alukach/aws-sam-typescript-boilerplate
 
+https://www.dynamodbguide.com/global-secondary-indexes/
+
 ### TODO
 
 [] config webpack
