@@ -21,12 +21,12 @@ export enum HttpStatusCode {
 }
 
 export enum HttpMethods {
-  GET = "GET",
-  PUT = "PUT",
-  POST = "POST",
-  DELETE = "DELETE",
-  OPTIONS = "OPTIONS",
-  PATCH = "PATCH",
+  GET = 'GET',
+  PUT = 'PUT',
+  POST = 'POST',
+  DELETE = 'DELETE',
+  OPTIONS = 'OPTIONS',
+  PATCH = 'PATCH',
 }
 
 export class BadRequestException extends Error {
@@ -45,18 +45,50 @@ export class UnauthorizedException extends Error {
   }
 }
 
+export class ForbiddenException extends Error {
+  public readonly statusCode: number;
+  constructor(message: string) {
+    super(message);
+    this.statusCode = HttpStatusCode.FORBIDDEN;
+  }
+}
+
+export class NotFoundException extends Error {
+  public readonly statusCode: number;
+  constructor(message: string) {
+    super(message);
+    this.statusCode = HttpStatusCode.NOT_FOUND;
+  }
+}
+
+export class NotImplementedException extends Error {
+  public readonly statusCode: number;
+  constructor(message: string) {
+    super(message);
+    this.statusCode = HttpStatusCode.NOT_IMPLEMENTED;
+  }
+}
+
+export class NotAcceptableException extends Error {
+  public readonly statusCode: number;
+  constructor(message: string) {
+    super(message);
+    this.statusCode = HttpStatusCode.NOT_ACCEPTABLE;
+  }
+}
+
 export class MethodNotAllowedException extends Error {
   public readonly statusCode: number;
   constructor(received: string, expected: HttpMethods) {
     super(
-      `This route only accepts the ${expected} method, you tried: ${received}`
+      `This route only accepts the ${expected} method, you tried: ${received}`,
     );
-    this.statusCode = HttpStatusCode.NOT_ACCEPTABLE;
+    this.statusCode = HttpStatusCode.METHOD_NOT_ALLOWED;
   }
 }
 
 export class InternalServerErrorException extends Error {
   constructor() {
-    super("Internal Server Error");
+    super('Internal Server Error');
   }
 }
