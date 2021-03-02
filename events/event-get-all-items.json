@@ -1,3 +1,4 @@
 {
-    "httpMethod": "GET"
+  "httpMethod": "GET",
+  "queryStringParameters": "{\"page\":1,\"size\":3,\"sortOrder\":\"ASC\",\"sortParam\":\"name\"}"
 }

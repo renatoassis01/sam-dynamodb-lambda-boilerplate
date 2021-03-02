@@ -8,7 +8,7 @@ import {
 import { sortBy } from './filters';
 
 export const setListPagination = (
-  data: any[],
+  data: any[] | undefined,
   queryParams?: Record<string, unknown>,
 ): PaginatedGetAllInterface => {
   const take = getTake(queryParams);
@@ -18,10 +18,10 @@ export const setListPagination = (
   return buildPaginatedGetAll(
     {
       items:
-        data.length > 0
+        data !== undefined && data.length > 0
           ? sortBy(data.slice(skip, skip + take), queryParams)
           : [],
-      count: data.length,
+      count: data !== undefined && data.length ? data.length : 0,
     },
     queryParams,
   );

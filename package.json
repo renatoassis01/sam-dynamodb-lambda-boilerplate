@@ -9,10 +9,13 @@
     "lodash.orderby": "^4.6.0"
   },
   "scripts": {
-    "start:dev": "tsc --watch",
+    "build": "webpack-cli",
+    "clean": "rimraf .aws-sam .vscode",
+    "prebuild": "rimraf .aws-sam .vscode",
+    "prewatch": "rimraf .aws-sam .vscode",
+    "start:dev": "webpack-cli -w",
     "format": "prettier --write \"src/**/*.ts\"",
     "format:quick": "pretty-quick --staged",
-    "build": "tsc",
     "lint": "eslint \"{src}/**/*.ts\" --fix",
     "test": "jest --detectOpenHandles",
     "test:watch": "jest --watch",
@@ -25,6 +28,7 @@
     "@types/node": "^14.14.31",
     "@typescript-eslint/eslint-plugin": "^4.6.1",
     "@typescript-eslint/parser": "^4.6.1",
+    "aws-sam-webpack-plugin": "^0.9.0",
     "aws-sdk-mock": "^5.1.0",
     "git-commit-msg-linter": "^3.0.0",
     "jest": "^26.6.3",
@@ -37,7 +41,9 @@
     "ts-loader": "^8.0.8",
     "ts-node": "^9.1.1",
     "tsconfig-paths": "^3.9.0",
-    "typescript": "^3.8.3"
+    "typescript": "^3.8.3",
+    "webpack": "^5.24.2",
+    "webpack-cli": "^4.5.0"
   },
   "pre-commit": "format:quick",
   "pre-push": "test",
