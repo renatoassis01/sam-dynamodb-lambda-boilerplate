@@ -7,7 +7,7 @@ up-dynamodb:
 start-emulator:
 	sam local start-api  --shutdown --docker-network local-dynamodb
 
-invoke-lambda:
+invoke:
 	sam local invoke --docker-network local-dynamodb  "${lambda}" -e ./events/event-${event}.json | jq  
 
 list-functions:

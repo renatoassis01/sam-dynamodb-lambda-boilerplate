@@ -6,7 +6,7 @@ import {
   HttpMethods,
   NotFoundException,
   NotImplementedException,
-} from './http';
+} from '../../utils/http';
 describe('Suite test http utils', () => {
   beforeEach(() => {
     jest.clearAllMocks();

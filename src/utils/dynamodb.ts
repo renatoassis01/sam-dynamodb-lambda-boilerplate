@@ -1,14 +1,16 @@
 import * as AWS from 'aws-sdk';
-import { getEndpointDynamo } from './environment';
-AWS.config.update({
-  apiVersion: '2012-08-10',
-  region: 'us-east-1',
-});
+import { Endpoint } from 'aws-sdk';
+import * as dotenv from 'dotenv';
+import { getEndpointDynamo, getRegion } from './environment';
+
+dotenv.config();
 
 export type ItemList = AWS.DynamoDB.DocumentClient.ItemList | undefined;
 
 export const dynamoClient = new AWS.DynamoDB.DocumentClient({
   endpoint: getEndpointDynamo(),
+  apiVersion: '2012-08-10',
+  region: getRegion(),
 });
 
 export const queryDynamodb = async (
@@ -31,6 +33,5 @@ export const queryDynamodb = async (
   };
 
   const response = await dynamoClient.query(params).promise();
-  console.log(response);
   return response.Items;
 };

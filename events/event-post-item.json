@@ -1,4 +1,4 @@
 {
   "httpMethod": "POST",
-  "body": "{\"name\": \"item\"}"
+  "body": "{\"name\":\"item\",\"user_id\":\"jNegDa6lqHSL0Cjv\"}"
 }

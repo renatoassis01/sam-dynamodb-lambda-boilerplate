@@ -1,4 +1,8 @@
-import { validatorBody, validatorName, validatorUserId } from './validators';
+import {
+  validatorBody,
+  validatorName,
+  validatorUserId,
+} from '../../utils/validators';
 describe('suite tests for validators', () => {
   beforeEach(() => {
     jest.clearAllMocks();

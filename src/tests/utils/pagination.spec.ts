@@ -2,11 +2,11 @@ import {
   DEFAULT_PAGINATION_PAGE,
   DEFAULT_PAGINATION_SIZE,
   DEFAULT_PAGINATION_SKIP,
-} from './constants';
-import * as paginationUtils from './pagination';
-import * as filterUtils from './filters';
-import * as fakesUtils from './fakes/fakeitems';
-import * as builders from '../utils/builders';
+} from '../../utils/constants';
+import * as paginationUtils from '../../utils/pagination';
+import * as filterUtils from '../../utils/filters';
+import * as fakesUtils from '../../utils/fakes/fakeitems';
+import * as builders from '../../utils/builders';
 
 describe('Suite tests for paginations Utils', () => {
   beforeEach(() => {

@@ -1,6 +1,6 @@
-import { HttpStatusCode } from './http';
-import * as fakeItems from './fakes/fakeitems';
-import * as builders from './builders';
+import { HttpStatusCode } from '../../utils/http';
+import * as fakeItems from '../../utils/fakes/fakeitems';
+import * as builders from '../../utils/builders';
 
 describe('Suite tests for builders', () => {
   beforeEach(() => {

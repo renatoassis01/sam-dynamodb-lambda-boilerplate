@@ -1,9 +1,9 @@
 import {
   DEFAULT_QUERY_SORT_PARAM,
   DEFAULT_QUERY_SORT_ORDER,
-} from './constants';
-import { getSortOrder, getSortParam, sortBy } from './filters';
-import * as fakeItems from './fakes/fakeitems';
+} from '../../utils/constants';
+import { getSortOrder, getSortParam, sortBy } from '../../utils/filters';
+import * as fakeItems from '../../utils/fakes/fakeitems';
 
 describe('Suite test for filters Utils', () => {
   beforeEach(() => {

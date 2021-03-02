@@ -1,13 +1,13 @@
-import { APIGatewayProxyEvent, Callback, Context } from "aws-lambda";
-import { buildResponse } from "../utils/builders";
-import { dynamoClient } from "../utils/dynamodb";
-import { getTableDynamo } from "../utils/environment";
-import { HttpStatusCode, InternalServerErrorException } from "../utils/http";
+import { APIGatewayProxyEvent, Callback, Context } from 'aws-lambda';
+import { buildResponse } from '../utils/builders';
+import { dynamoClient } from '../utils/dynamodb';
+import { getTableDynamo } from '../utils/environment';
+import { HttpStatusCode, InternalServerErrorException } from '../utils/http';
 
 export const getAll = async (
   event: APIGatewayProxyEvent,
   context: Context,
-  callback: Callback
+  callback: Callback,
 ): Promise<void> => {
   try {
     const params = {
